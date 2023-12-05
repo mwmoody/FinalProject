@@ -1,35 +1,62 @@
 function generateMealPlan(){
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const goal = document.getElementById('goal').value;
+  const mealPlanData = [];
+  const rows = document.querySelectorAll('#mealPlanTable tbody tr');
+  
+  rows.forEach(row => {
+    const day = row.cells[0].textContent;
+    const meals = Array.from(row.cells).slice(1).map(cell => cell.textContent);
+    mealPlanData.push({ day, meals });
+  });
+  
+ const generatedPageContent = `
+    <h2>${name}</h2>
+    <p> ${email}</p>
+    <p><strong>Goal: ${goal}</p>
 
-	const mealPlan = window.open('', '_blank');
-  	mealPlan.document.write('<html><head><title>Your Meal Plan</title>');
+    <h3>Meal Plan</h3>
+    <table border="1">
+      <tr>
+        <th>Day</th>
+        <th>Breakfast</th>
+        <th>Snack</th>
+        <th>Lunch</th>
+        <th>Snack</th>
+        <th>Dinner</th>
+      </tr>
+      ${generateMealRows(mealPlanData)}
+    </table>
+  `;
 
-  	mealPlan.document.write('</style></head><body>');
-  	mealPlan.document.write('<h1>Your Meal Plan</h1>');
-  	mealPlan.document.write('<div class="personal-info">');
-	
+  const generatedPageWindow = window.open();
+  generatedPageWindow.document.write(generatedPageContent);
+}
+// creates the data for each row used
+function generateMealRows(mealPlanData){
+  let rows = '';
+  mealPlanData.forEach(dayData => {
+    rows += `<tr>
+      <td>${dayData.day}</td>
+      <td>${dayData.meals[0]}</td>
+      <td>${dayData.meals[1]}</td>
+      <td>${dayData.meals[2]}</td>
+      <td>${dayData.meals[3]}</td>
+      <td>${dayData.meals[4]}</td>
+    </tr>`;
+  });
+  return rows;
+}
 
-  	mealPlan.document.write('</div>');
-	mealPlan.document.write('<h2>Meal Plan</h2>');
+function clearForm() {
+  document.getElementById('mealForm').reset();
+  clearTableInput();
+}
 
-  	const inputs = document.getElementsByClassName('meal-input');
-  	const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-  	mealPlan.document.write('<table>');
-  	mealPlan.document.write('<tr><th>Day</th><th>Breakfast</th><th>Snack 1</th><th>Lunch</th><th>Snack 2</th><th>Dinner</th></tr>');
-
-  	for (let i = 0; i < days.length; i++) {
-    		const day = days[i];
-    		const breakfast = mealInputs[i * 5].value.trim();
-    		const snack1 = mealInputs[i * 5 + 1].value.trim();
-    		const lunch = mealInputs[i * 5 + 2].value.trim();
-    		const snack2 = mealInputs[i * 5 + 3].value.trim();
-    		const dinner = mealInputs[i * 5 + 4].value.trim();
-
-    	mealPlan.document.write(`<tr><td>${day}</td><td>${breakfast}</td><td>${Snack 1}</td><td>${lunch}</td><td>${Snack 2}</td><td>${dinner}</td></tr>`);
-	
-	}
-
-  	mealPlan.document.write('</table>');
-  	mealPlan.document.write('</body></html>');
-  	mealPlan.document.close();
+function clearTableInput() {
+  const cells = document.querySelectorAll('#mealPlanTable tbody td');
+  cells.forEach(cell => {
+    cell.textContent = '';
+  });
 }

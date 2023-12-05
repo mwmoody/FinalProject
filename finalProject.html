@@ -1,46 +1,103 @@
 <!DOCTYPE html>
-<html>
-<head>WEB-115 Final Project</head> 
+<html lang="en">
+<head>
+  <title>WEB-115 Final Project</title>
+  <link rel="stylesheet" href="banner.css">
+</head>
 <body>
-<p><br>Max Moody </p>
-<p>Web Markup and Scripting (2023FA.WEB.115.0003)</p>
-<p>Build Your Meal Plan</p2>
+  <div id="banner">
+    <h1>Build Your Meal Plan</h1>
+    <p>Max Moody</p>
+    <p>Web Markup and Scripting (2023FA.WEB.115.0003)</p>
+  </div>
 
-<table>
-  <tr>
-    <th>Day</th>
-    <th>Breakfast</th>
-    <th>Snack 1</th>
-    <th>Lunch</th>
-    <th>Snack 2</th>
-    <th>Dinner</th>
-  </tr>
-  <tr>
-    <td>Monday</td>
-    <td><input type="text" class="meal-input" required></td>
-    <td><input type="text" class="meal-input" required></td>
-    <td><input type="text" class="meal-input" required></td>
-    <td><input type="text" class="meal-input" required></td>
-    <td><input type="text" class="meal-input" required></td>
-  </tr>
-  <tr>
-    <td>Tuesday</td>
-    <td><input type="text" class="meal-input" required></td>
-    <td><input type="text" class="meal-input" required></td>
-    <td><input type="text" class="meal-input" required></td>
-    <td><input type="text" class="meal-input" required></td>
-    <td><input type="text" class="meal-input" required></td>
-    <tr>
-    <td>Wednesday</td>
-    <td><input type="text" class="meal-input" required></td>
-    <td><input type="text" class="meal-input" required></td>
-    <td><input type="text" class="meal-input" required></td>
-    <td><input type="text" class="meal-input" required></td>
-    <td><input type="text" class="meal-input" required></td>
-  </tr>
-  </tr>
-</table>
+<br> <br> <br>
+ <table id="mealPlanTable">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Breakfast</th>
+        <th>Snack</th>
+        <th>Lunch</th>
+        <th>Snack</th>
+        <th>Dinner</th>
+      </tr>
+    </thead>
+    <tbody id="mealPlanBody">
+      <tr>
+        <td>Monday</td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+      </tr>
+      <tr>
+        <td>Tuesday</td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+      </tr>
+      <tr>
+        <td>Wednesday</td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+      </tr>
+      <tr>
+        <td>Thursday</td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+      </tr>
+      <tr>
+        <td>Friday</td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+      </tr>
+      <tr>
+        <td>Saturday</td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+      </tr>
+      <tr>
+        <td>Sunday</td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+      </tr>
+    </tbody>
+  </table> <br>
 
-  	<script src="projectJS.js"></script>
+  <form id="mealForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+<br> <br>
+    <label for="goal">Goal for the Week:</label>
+    <input type="goal" id="goal" required>
+	<br> <br>
+    <button type="button" onclick="generateMealPlan()">Generate Meal Plan</button>
+    <button type="button" onclick="clearForm()">Clear Planner</button>
+    <button type="button" onclick="downloadMealPlan()">Download Meal Plan</button>
+  </form>
+
+  <script src="projectJS.js"></script>
 </body>
 </html>
